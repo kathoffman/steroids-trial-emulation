@@ -6,13 +6,13 @@ A [slideshow](presentations/hoffman_acic_slides.pdf) summary of the paper is ava
 
 <h2>Code Tutorial Contents</h2>
 
-- A script run a similar analysis (pared to improve computational time) with demo data of n=2000 patients: [`analysis.R`](code/analysis.R).
+- A script to run a similar analysis (pared to improve computational time) with demo data of n=2000 patients: [`analysis.R`](code/analysis.R).
 
-- A script run a similar analysis to clean the output of `analysis.R`: [`report_results.R`](code/report_results.R)
+- A script to clean the output of `analysis.R`: [`report_results.R`](code/report_results.R)
 
 <h2>Demo Data</h2>
 
-The analysis is primarily run using the open source `R` package `lmtp` (*please note we use the `sl3`-compatible version*). We provide demo data in the `data` folder in combination with this visual representation of the required data format:
+The primary analysis is run using the open source `R` package `lmtp` (*please note we use the `sl3`-compatible version to improve computational speed*). We provide demo data in the `data` folder in combination with this visual representation of the required data format:
 
 ![](/img/analytical_file.png)
 
@@ -25,3 +25,17 @@ A few notes to help with pre-processing:
 - If a patient experiences the event, their outcome variables should be `1` for all time points until the end of the study.
 
 - If a patient has a censoring indicator of `0` (meaning they are lost to follow-up starting at the next time point), all columns corresponding to those future time points should have values of `NA`.
+
+<h2>Analysis Specifications</h2>
+
+<h3>Super learner libraries</h3>
+
+The code to make super learner libraries (via `sl3`) used in the paper's analysis is in `analysis.R`, however, all but LASSO and mean are commented out to improve computational time. Learners were the same for intervention and outcome mechanisms. We specified 10 folds for superlearner cross-validation. This is 5 in our demo analysis code for computational time purposes.
+
+<h3>Time-dependent confounding assumption</h3>
+
+We used a Markov assumption of `k=2`, meaning a patient's time-dependent confounders for the previous two time periods (48 hour windows) were sufficient to capture confounding for the next time point's mechanism. This was a decision stemming from clinical knowledge (laboratory results are ordered in  24 or 48 hour intervals). This is 1 in our demo analysis code for computational time purposes.
+
+<h3>Cross-fitting</h3>
+
+We employed 10-fold cross-fitting on our SDR estimator. This is 5 in our demo analysis code for computational time purposes.
