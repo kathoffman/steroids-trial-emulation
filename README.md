@@ -12,7 +12,7 @@ A [slideshow](presentations/hoffman_acic_slides.pdf) summary of the paper is ava
 
 <h2>Demo Data</h2>
 
-We hope to have a script soon to demo the pre-processing of long-to-wide format data required to run the open source `R` package `lmtp`. In the meantime, we provide demo data in the `data` folder in combination with this visual representation of the required data format:
+The analysis is primarily run using the open source `R` package `lmtp` (*please note we use the `sl3`-compatible version*). We provide demo data in the `data` folder in combination with this visual representation of the required data format:
 
 ![](/img/analytical_file.png)
 
