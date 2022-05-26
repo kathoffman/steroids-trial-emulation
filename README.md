@@ -2,17 +2,19 @@
 
 This repository was created to help other analysts run an analysis similar to Hoffman et. al's *Corticosteroids in COVID-19: Optimizing Observational Research Through Target Trial Emulations* (2022).
 
-To view a slideshow summary of the paper, see [hoffman_acic_slides.pdf](presentations/hoffman_acic_slides.pdf). These slides were presented at the American Causal Inference Conference in Berkeley, CA on May 24, 2022.
+A [slideshow](presentations/hoffman_acic_slides.pdf) summary of the paper is available in the [presentations](/presentations) folder. These slides were presented by Katherine Hoffman at the American Causal Inference Conference in Berkeley, CA on May 24, 2022.
 
-Currently, this code tutorial contains:
+<h2>Code Tutorial Contents</h2>
 
 - A script run a similar analysis (pared to improve computational time) with demo data of n=2000 patients: [`analysis.R`](code/analysis.R).
 
 - A script run a similar analysis to clean the output of `analysis.R`: [`report_results.R`](code/report_results.R)
 
+<h2>Demo Data</h2>
+
 We hope to have a script soon to demo the pre-processing of long-to-wide format data required to run the open source `R` package `lmtp`. In the meantime, we provide demo data in the `data` folder in combination with this visual representation of the required data format:
 
-![](img/analytical_file)
+![](/img/analytical_file.png)
 
 The required data structure for a longitudinal time-to-event analysis is wide (one row per subject), with one column per time point per variable (treatment, censoring indicator, outcome indicator, time-varying covariate). The exception to this is baseline variables, which by definition do not have multiple time points.
 
