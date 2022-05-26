@@ -186,7 +186,7 @@ res_no_steroid <-
 
 ## save results
 
-saveRDS(res_steroid, file = here::here("code/github_tutorial/res_steroid.rds"))
-saveRDS(res_no_steroid, file = here::here("code/github_tutorial/res_no_steroid.rds"))
+saveRDS(res_steroid, file = here::here("output/res_steroid.rds"))
+saveRDS(res_no_steroid, file = here::here("output/res_no_steroid.rds"))
 
 

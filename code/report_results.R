@@ -39,7 +39,7 @@ res_no_steroid <- read_rds(here::here("code/github_tutorial/res_no_steroid.rds")
 
 res_steroid %>% tidy()
 
-imap_dfr(list("Steroids" = res_steroid, "No Steroids" = res_no_steroid),
+ests <- imap_dfr(list("No Steroids" = res_no_steroid, "Steroids" = res_steroid),
         function(x,y){
   x %>%
     tidy() %>%
@@ -47,8 +47,23 @@ imap_dfr(list("Steroids" = res_steroid, "No Steroids" = res_no_steroid),
            estimate=1-estimate,
            conf_low = 1-conf.high,
            conf_high=1-conf.low) %>%
-   select(estimate, conf_low, conf_high)
+   select(intervention, estimate, conf_low, conf_high)
            
 })
 
-%>% tidy() %>% mutate(estimate=1-estimate, conf_low = 1-conf.high, conf_high=1-conf.low) %>% select(estimate, conf_low, conf_high)
+diff <- lmtp_contrast(res_steroid, ref=res_no_steroid)$vals %>%
+  mutate(estimate = -theta,
+         conf_low = -conf.high,
+         conf_high= -conf.low,
+         intervention = "Difference")  %>%
+  select(intervention, estimate, conf_low, conf_high)
+
+
+ests %>%
+  bind_rows(diff) %>%
+  gt() %>%
+  fmt_number(columns = 2:4, decimals = 1, scale_by=100) %>%
+  cols_merge(columns = 2:4, pattern = c("{1} ({2}, {3})")) %>%
+  cols_label(intervention = "Intervention",
+             estimate = "Estimated 28-day Mortality Rate\n(95% CI)")
+  
