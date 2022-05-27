@@ -43,7 +43,7 @@ library(sl3)
 
 # future versions of this repo will contain the data wrangling steps to
 # achieve this wide-format data
-dat_lmtp <- read_rds(here::here("code/github_tutorial/dat_demo.rds"))
+dat_lmtp <- read_rds(here::here("data/dat_demo.rds"))
   
 ## ----------------------------------------------------------------------------------------
 
