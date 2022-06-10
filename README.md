@@ -1,6 +1,6 @@
 <h1>Steroids Target Trial Emulation Tutorial</h1>
 
-This repository was created to help other analysts run an analysis similar to Hoffman et. al's MedRxiv pre-print *Corticosteroids in COVID-19: Optimizing Observational Research Through Target Trial Emulations* (2022).
+This repository was created to help other analysts run an analysis similar to Hoffman et. al's MedRxiv pre-print [*Corticosteroids in COVID-19: Optimizing Observational Research Through Target Trial Emulations*](https://www.medrxiv.org/content/10.1101/2022.05.27.22275037v3) (2022).
 
 This research was presented at the American Causal Inference Conference on May 24, 2022; [slide deck available here](presentations/hoffman_acic_slides.pdf).
 
@@ -9,6 +9,8 @@ This research was presented at the American Causal Inference Conference on May 2
 -  [`analysis.R`](code/analysis.R): a script to run a similar analysis (pared to improve computational time) with demo data of n=2000 patients
 
 - [`report_results.R`](code/report_results.R): a script to clean the output of `analysis.R`
+
+- [`trt_timeline_viz.R`](code/report_results.R): a script to create a patient treatment timeline similar to Supplemental Figure 1
 
 <h2>Demo Data</h2>
 
@@ -39,3 +41,9 @@ We used a Markov assumption of 2, meaning a patient's time-dependent confounders
 <h3>Cross-fitting</h3>
 
 We employed 10-fold cross-fitting on our SDR estimator. This is set to a value of `folds=5` in our demo analysis code for computational time purposes.
+
+<h1>Treatment timelines</h1>
+
+A figure in the Supplemental Materials shows a random sample of 50 patients' treatment timelines. A blog post to aid other analysts in creating their own treatment timelines can be found [here](https://www.khstats.com/blog/trt-timelines/multiple-vars/).
+
+![](/img/timeline.png)
