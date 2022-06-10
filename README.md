@@ -46,4 +46,5 @@ We employed 10-fold cross-fitting on our SDR estimator. This is set to a value o
 
 A figure in the Supplemental Materials shows a random sample of 50 patients' treatment timelines. A blog post to aid other analysts in creating their own treatment timelines can be found [here](https://www.khstats.com/blog/trt-timelines/multiple-vars/).
 
-![](/img/timeline.png){ width=70% }
+<img src="/img/trt_timeline.png" width="70%">
+
