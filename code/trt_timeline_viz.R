@@ -23,7 +23,7 @@
 library(tidyverse)
 library(gt)
 
-dat_long  <- read_rds(here::here("data/dat_trt_timeline.rds"))
+dat_long  <- read_csv(here::here("data/dat_trt_timeline.csv"))
 
 ## ------------------------------------------------------------------------------------------
 
