@@ -2,7 +2,7 @@
 
 This repository was created to help other analysts run an analysis similar to Hoffman et. al's MedRxiv pre-print *Corticosteroids in COVID-19: Optimizing Observational Research Through Target Trial Emulations* (2022).
 
-A [slide deck](presentations/hoffman_acic_slides.pdf) on this research was presented at the American Causal Inference Conference in Berkeley, CA on May 24, 2022.
+This research was presented at the American Causal Inference Conference on May 24, 2022; [slide deck available here](presentations/hoffman_acic_slides.pdf).
 
 <h2>Code Contents</h2>
 
