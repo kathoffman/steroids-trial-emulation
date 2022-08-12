@@ -12,6 +12,8 @@ This research was presented at the American Causal Inference Conference on May 2
 
 - [`trt_timeline_viz.R`](code/report_results.R): a script to create a patient treatment timeline similar to Supplemental Figure 1
 
+- [`forest_plot_viz.R`](code/report_results.R): a script to create the forest plot for Figure 3
+
 <h2>Demo Data</h2>
 
 The primary analysis is run using the open source `R` package [`lmtp`](https://github.com/nt-williams/lmtp) (*please note we use the `sl3`-compatible branch to improve computational speed*). A helpful vignette is available here. We provide demo data in the `data` folder in combination with this visual representation of the required data format:
@@ -42,9 +44,27 @@ We used a Markov assumption of 2, meaning a patient's time-dependent confounders
 
 We employed 10-fold cross-fitting on our SDR estimator. This is set to a value of `folds=5` in our demo analysis code for computational time purposes.
 
-<h1>Treatment timelines</h1>
+# Figures
+
+## Figure 1: Hypothetical intervention
+
+I've made this figure publicly available on a Google Slide deck [[here]](https://docs.google.com/presentation/d/18TpwcHzPrygb_4Wvm8saZwvJXE8ws4PqzQcSfQJg4Ak/edit#slide=id.g11b42e0cbf6_0_87). Anyone is free to edit as they see fit for their own papers and educational materials. To edit this read-only slide, click File --> Save a copy and edit off your duplicated copy.
+
+## Figure 2: Directed acyclic graph (DAG)
+
+I've made this figure publicly available on a Google Slide deck [[here]](https://docs.google.com/presentation/d/18TpwcHzPrygb_4Wvm8saZwvJXE8ws4PqzQcSfQJg4Ak/edit#slide=id.g11b42e0cbf6_0_87). Anyone is free to edit as they see fit for their own papers and educational materials. To edit this read-only slide, click File --> Save a copy and edit off your duplicated copy.
+
+## Figure 3
+
+Code to recreate this figure is in [`forest_plot_viz.R`](code/forest_plot_viz.R).
+
+## e-Figure 1: Treatment timelines
 
 A figure in the Supplemental Materials shows a random sample of 50 patients' treatment timelines. A blog post to aid other analysts in creating their own treatment timelines can be found [here](https://www.khstats.com/blog/trt-timelines/multiple-vars/).
 
 <center><img src="/img/timeline.png" width="70%">.</center>
+
+## e-Figure 2: Data analytic file
+
+This figure (shown above) under Demo Data is publicly available on a Google Slide deck [[here]](https://docs.google.com/presentation/d/18TpwcHzPrygb_4Wvm8saZwvJXE8ws4PqzQcSfQJg4Ak/edit#slide=id.g11b42e0cbf6_0_87). Anyone is free to edit as they see fit for their own papers and educational materials. To edit this read-only slide, click File --> Save a copy and edit off your duplicated copy.
 
