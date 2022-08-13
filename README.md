@@ -68,7 +68,7 @@ Code to recreate this figure is in [`forest_plot_viz.R`](code/forest_plot_viz.R)
 
 A figure in the Supplemental Materials shows a random sample of 50 patients' treatment timelines. A blog post to aid other analysts in creating their own treatment timelines can be found [here](https://www.khstats.com/blog/trt-timelines/multiple-vars/).
 
-<center><img src="/img/timeline.png" width="70%">.</center>
+<center><img src="/img/timeline.png">.</center>
 
 ## e-Figure 2: Data analytic file
 
