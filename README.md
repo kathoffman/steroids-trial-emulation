@@ -6,7 +6,7 @@ This research was presented at the American Causal Inference Conference on May 2
 
 <h2>Code Contents</h2>
 
--  [`analysis.R`](code/analysis.R): a script to run a similar analysis (pared to improve computational time) with demo data of n=2000 patients
+- [`analysis.R`](code/analysis.R): a script to run a similar analysis (pared to improve computational time) with demo data of n=2000 patients
 
 - [`report_results.R`](code/report_results.R): a script to clean the output of `analysis.R`
 
@@ -48,21 +48,21 @@ We employed 10-fold cross-fitting on our SDR estimator. This is set to a value o
 
 ## Figure 1: Hypothetical intervention
 
-<center><img src="/img/figure-1.jpg" width="70%">.</center>
-
 I've made this figure publicly available on a Google Slide deck [[here]](https://docs.google.com/presentation/d/18TpwcHzPrygb_4Wvm8saZwvJXE8ws4PqzQcSfQJg4Ak/edit#slide=id.g11b42e0cbf6_0_87). Anyone is free to edit as they see fit for their own papers and educational materials. To edit this read-only slide, click File --> Save a copy and edit off your duplicated copy.
+
+<center><img src="/img/figure-1.jpg">.</center>
 
 ## Figure 2: Directed acyclic graph (DAG)
 
-<center><img src="/img/figure-2.jpg" width="70%">.</center>
-
 I've made this figure publicly available on a Google Slide deck [[here]](https://docs.google.com/presentation/d/18TpwcHzPrygb_4Wvm8saZwvJXE8ws4PqzQcSfQJg4Ak/edit#slide=id.g11b42e0cbf6_0_87). Anyone is free to edit as they see fit for their own papers and educational materials. To edit this read-only slide, click File --> Save a copy and edit off your duplicated copy.
+
+<center><img src="/img/figure-2.jpg">.</center>
 
 ## Figure 3
 
-<center><img src="/img/figure-3.jpg" width="70%">.</center>
-
 Code to recreate this figure is in [`forest_plot_viz.R`](code/forest_plot_viz.R).
+
+<center><img src="/img/figure-3.jpg".</center>
 
 ## e-Figure 1: Treatment timelines
 
