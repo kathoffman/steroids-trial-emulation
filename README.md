@@ -1,6 +1,6 @@
 <h1>Steroids Target Trial Emulation Tutorial</h1>
 
-This repository was created to help other analysts run an analysis similar to Hoffman et. al's MedRxiv pre-print [*Comparison of a Target Trial Emulation Framework to Cox Regression to Estimate the Effect of Corticosteroids on COVID-19 Mortality*](https://www.medrxiv.org/content/10.1101/2022.05.27.22275037v3) (2022).
+This repository was created to help other analysts run an analysis similar to Hoffman et al.'s MedRxiv pre-print [*Comparison of a Target Trial Emulation Framework to Cox Regression to Estimate the Effect of Corticosteroids on COVID-19 Mortality*](https://www.medrxiv.org/content/10.1101/2022.05.27.22275037v3) (2022).
 
 This research was presented at the American Causal Inference Conference on May 24, 2022. The slide deck is available [[here]](presentations/hoffman_acic_slides.pdf).
 

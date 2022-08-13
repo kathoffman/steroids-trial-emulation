@@ -52,9 +52,28 @@ dat_lmtp <- read_rds(here::here("data/dat_demo.rds"))
 # treatment intervention 1: when a patient becomes hypoxic, administer steroids for 6 days
 # H is a hypoxia time treatment indicator created in data pre-processing
 # if intervention indicator is 1, set steroids to 1, otherwise, 0
-int_steroids_after_hypoxia <- function(data, trt) {
-  ifelse(data[[sub("A", "H", trt)]] == 1, 1, 0) 
+int_steroids_after_hypoxia <- function(dat, trt) {
+  # function takes the data and treatment variable name
+  trt_day <- parse_number(trt) # first, get the day number of trt of interest
+  # we want to check the previous *6* days for hypoxia
+  earliest_day_to_check <- max(0,trt_day-5)  # -5 will get us previous six days
+  # get H_* column names for the hypoxia days we need to check
+  hypoxia_days_to_check <- paste0("H_", 
+                                  str_pad(earliest_day_to_check:trt_day, 
+                                          width=2,
+                                          side="left",
+                                          pad="0")
+  )
+  # set up a count variable to check when hypoxia was reached
+  sum <- 0
+  for(i in hypoxia_days_to_check){
+    add <- ifelse(dat[[i]] == 1, 1, 0)
+    sum <- sum + add
+  }
+  # if hypoxia was reached in those (max) 6 days before treatment to check, return 1 for trt
+  return(ifelse(sum > 0, 1, 0)) # else return 0
 }
+
 
 # treatment intervention 2: never steroids
 int_no_steroids <- function(data, trt) {
