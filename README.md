@@ -1,8 +1,8 @@
 <h1>Steroids Target Trial Emulation Tutorial</h1>
 
-This repository was created to help other analysts run an analysis similar to Hoffman et. al's MedRxiv pre-print [*Corticosteroids in COVID-19: Optimizing Observational Research Through Target Trial Emulations*](https://www.medrxiv.org/content/10.1101/2022.05.27.22275037v3) (2022).
+This repository was created to help other analysts run an analysis similar to Hoffman et. al's MedRxiv pre-print [*Comparison of a Target Trial Emulation Framework to Cox Regression to Estimate the Effect of Corticosteroids on COVID-19 Mortality*](https://www.medrxiv.org/content/10.1101/2022.05.27.22275037v3) (2022).
 
-This research was presented at the American Causal Inference Conference on May 24, 2022; [slide deck available here](presentations/hoffman_acic_slides.pdf).
+This research was presented at the American Causal Inference Conference on May 24, 2022. The slide deck is available [[here]](presentations/hoffman_acic_slides.pdf).
 
 <h2>Code Contents</h2>
 
@@ -12,7 +12,7 @@ This research was presented at the American Causal Inference Conference on May 2
 
 - [`trt_timeline_viz.R`](code/report_results.R): a script to create a patient treatment timeline similar to Supplemental Figure 1
 
-- [`forest_plot_viz.R`](code/report_results.R): a script to create the forest plot for Figure 3
+- [`forest_plot_viz.R`](code/report_results.R): a script to create the forest plot of model first results (Figure 3)
 
 <h2>Demo Data</h2>
 
@@ -48,13 +48,19 @@ We employed 10-fold cross-fitting on our SDR estimator. This is set to a value o
 
 ## Figure 1: Hypothetical intervention
 
+<center><img src="/img/figure-1.jpg" width="70%">.</center>
+
 I've made this figure publicly available on a Google Slide deck [[here]](https://docs.google.com/presentation/d/18TpwcHzPrygb_4Wvm8saZwvJXE8ws4PqzQcSfQJg4Ak/edit#slide=id.g11b42e0cbf6_0_87). Anyone is free to edit as they see fit for their own papers and educational materials. To edit this read-only slide, click File --> Save a copy and edit off your duplicated copy.
 
 ## Figure 2: Directed acyclic graph (DAG)
 
+<center><img src="/img/figure-2.jpg" width="70%">.</center>
+
 I've made this figure publicly available on a Google Slide deck [[here]](https://docs.google.com/presentation/d/18TpwcHzPrygb_4Wvm8saZwvJXE8ws4PqzQcSfQJg4Ak/edit#slide=id.g11b42e0cbf6_0_87). Anyone is free to edit as they see fit for their own papers and educational materials. To edit this read-only slide, click File --> Save a copy and edit off your duplicated copy.
 
 ## Figure 3
+
+<center><img src="/img/figure-3.jpg" width="70%">.</center>
 
 Code to recreate this figure is in [`forest_plot_viz.R`](code/forest_plot_viz.R).
 
