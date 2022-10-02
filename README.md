@@ -1,6 +1,6 @@
 <h1>Steroids Target Trial Emulation Tutorial</h1>
 
-This repository was created to help other analysts run an analysis similar to Hoffman et al.'s MedRxiv pre-print [*Comparison of a Target Trial Emulation Framework to Cox Regression to Estimate the Effect of Corticosteroids on COVID-19 Mortality*](https://www.medrxiv.org/content/10.1101/2022.05.27.22275037v3) (2022).
+This repository was created to help other analysts run analyses similar to [*Comparison of a Target Trial Emulation Framework to Cox Regression to Estimate the Effect of Corticosteroids on COVID-19 Mortality*](https://www.medrxiv.org/content/10.1101/2022.05.27.22275037v3) (Hoffman et al. 2022, *JAMA Network Open*).
 
 This research was presented at the American Causal Inference Conference on May 24, 2022. The slide deck is available [[here]](presentations/hoffman_acic_slides.pdf).
 
@@ -16,7 +16,7 @@ This research was presented at the American Causal Inference Conference on May 2
 
 <h2>Demo Data</h2>
 
-The primary analysis is run using the open source `R` package [`lmtp`](https://github.com/nt-williams/lmtp) (*please note we use the `sl3`-compatible branch to improve computational speed*). A helpful vignette is available here. We provide demo data in the `data` folder in combination with this visual representation of the required data format:
+The primary analysis is run using the open source `R` package [`lmtp`](https://github.com/nt-williams/lmtp). Please note we use the `sl3`-compatible branch to improve computational speed. We provide demo data in the `data` folder in combination with this visual representation of the required data format:
 
 ![](/img/analytical_file.png)
 
@@ -73,4 +73,6 @@ A figure in the Supplemental Materials shows a random sample of 50 patients' tre
 ## e-Figure 2: Data analytic file
 
 This figure (shown above) under Demo Data is publicly available on a Google Slide deck [[here]](https://docs.google.com/presentation/d/18TpwcHzPrygb_4Wvm8saZwvJXE8ws4PqzQcSfQJg4Ak/edit#slide=id.g11b42e0cbf6_0_87). Anyone is free to edit as they see fit for their own papers and educational materials. To edit this read-only slide, click File --> Save a copy and edit off your duplicated copy.
+
+## References
 
