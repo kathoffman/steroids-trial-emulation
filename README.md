@@ -6,7 +6,7 @@ This research was presented at the American Causal Inference Conference on May 2
 
 <h2>Code Contents</h2>
 
-- [`analysis.R`](code/analysis.R): a script to run a similar analysis (pared to improve computational time) with demo data of n=2000 patients
+- [`analysis.R`](code/analysis.R): a script to run a similar analysis (pared to improve computational time) with simulated data of n=500 patients
 
 - [`report_results.R`](code/report_results.R): a script to clean the output of `analysis.R`
 

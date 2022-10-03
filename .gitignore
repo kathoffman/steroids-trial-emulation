@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+.DS_Store
+code/wrangle_data.R 

@@ -24,72 +24,76 @@
 
 ## system set up
 
-options(java.parameters = '-Xmx2500m') # expand Java RAM for BART
+options(java.parameters = '-Xmx2500m') # expand Java RAM for BART on cluster
 set.seed(7)
+op <- options(nwarnings = 10000) ## <- get "full statistics" of warnings
 
 ## load necessary packages: 
 
 # install.packages(c("tidyverse","earth","BART","glmnet"))
-# devtools::install_github("nt-williams/lmtp@sl3") -- sl3 compatible branch (faster)
+# devtools::install_github("nt-williams/lmtp@sl3") # sl3 compatible branch (faster)
 # devtools::install_github("tlverse/sl3")
 
 library(tidyverse)
 library(lmtp) # note that this code uses sl3 version
-library(sl3) 
+library(future)
+library(sl3)
+
+plan(sequential) # change depending on parallelization preferences, see ?future for details
 
 ## -----------------------------------------------------------------------------------------
 
 ## load data
 
-# future versions of this repo will contain the data wrangling steps to
-# achieve this wide-format data
+# wide-format, already pre-processed (see img/analytical_file.png and README.MD)
 dat_lmtp <- read_rds(here::here("data/dat_demo.rds"))
-  
+
 ## ----------------------------------------------------------------------------------------
 
 ## write intervention functions
 
-# treatment intervention 1: when a patient becomes hypoxic, administer steroids for 6 days
-# H is a hypoxia time treatment indicator created in data pre-processing
-# if intervention indicator is 1, set steroids to 1, otherwise, 0
+# treatment intervention 1:
+# when a patient becomes hypoxic, administer steroids for 6 days
+# H is the day of severe hypoxia indicator variable created in data pre-processing
+# this function takes in dataframe and treatment variable name (A_00, A_01, etc.)
+# then if corresponding hypoxia indicator (H_00, H_01, etc.) is 1, set steroids to 1 for the next 6 days, otherwise, 0
 int_steroids_after_hypoxia <- function(dat, trt) {
-  # function takes the data and treatment variable name
-  trt_day <- parse_number(trt) # first, get the day number of trt of interest
-  # we want to check the previous *6* days for hypoxia
-  earliest_day_to_check <- max(0,trt_day-5)  # -5 will get us previous six days
-  # get H_* column names for the hypoxia days we need to check
+  trt_day <- parse_number(trt) # first, get the number of the treatment day of interest
+  # we want to check the previous 6 days for hypoxia
+  earliest_day_to_check <- max(0,trt_day-5)  # subtracting 5 will get us previous six days
+  # this generates the relevant H_* column names for the hypoxia days we need to check
   hypoxia_days_to_check <- paste0("H_", 
                                   str_pad(earliest_day_to_check:trt_day, 
                                           width=2,
                                           side="left",
                                           pad="0")
   )
-  # set up a count variable to check when hypoxia was reached
+  # we'll set up a count variable to check when hypoxia was reached
   sum <- 0
   for(i in hypoxia_days_to_check){
     add <- ifelse(dat[[i]] == 1, 1, 0)
     sum <- sum + add
   }
-  # if hypoxia was reached in those (max) 6 days before treatment to check, return 1 for trt
-  return(ifelse(sum > 0, 1, 0)) # else return 0
+  # if hypoxia was reached in one those (max) 6 days before treatment to check, return 1 for that treatment day
+  return(ifelse(sum > 0, 1, 0)) # otherwise, return 0
 }
 
 
-# treatment intervention 2: never steroids
+# treatment intervention 2:
+# never steroids - always return 0 for treatment
 int_no_steroids <- function(data, trt) {
-  data[[trt]] <- 0
-  data[[trt]]
+  data[[trt]] <- 0 # just change the entire treatment vector of interest to 0
+  data[[trt]] # and return
 }
 
 ## ------------------------------------------------------------------------------------------
 
-## set up superlearner candidate learners (run through {sl3})
+## set up superlearner candidate learners (to run through {sl3} within lmtp)
 
 mars_grid_params <- list( # manually create a grid of MARS learners
   degree = c(2,3),
   penalty = c(1,2,3)
 )
-
 mars_grid <- expand.grid(mars_grid_params, KEEP.OUT.ATTRS = FALSE)
 mars_learners <- apply(mars_grid, MARGIN = 1, function(tuning_params) {
   do.call(Lrnr_earth$new, as.list(tuning_params))
