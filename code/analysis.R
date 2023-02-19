@@ -11,11 +11,11 @@
 ## Date Created: 2022-05-22
 ##
 ## Author: Katherine Hoffman, 2022
-## Email: kah2797@med.cornell.edu
+## Email: kathoffman.stats@gmail.com
 ##
 ## ------------------------------------------------------------------------------------------
 ##
-## Notes: The data set of n=2000 patients contains realistic values for patients but
+## Notes: The data set of n=500 patients for time=(1,2,...,14) contains realistic values for patients but
 ## is a toy data set and cannot be used to obtain the result in the paper due to
 ## data-sharing restrictions. The interventions are 1: 6 days of corticosteroids at time of
 ## hypoxia vs. no corticosteroids
@@ -24,7 +24,7 @@
 
 ## system set up
 
-options(java.parameters = '-Xmx2500m') # expand Java RAM for BART on cluster
+options(java.parameters = '-Xmx2500m') # expand Java RAM for BART to run on a cluster computer
 set.seed(7)
 op <- options(nwarnings = 10000) ## <- get "full statistics" of warnings
 
@@ -128,19 +128,16 @@ padded_days <- str_pad(0:(outcome_day-1), 2, pad = "0")
 padded_days_out <- str_pad(1:outcome_day, 2, pad = "0")
 
 a <-  paste0("A_", padded_days) # names of treatment cols
-bs <- dat_lmtp %>% # names of baseline covariates cols
-  select(-id,  # easier to remove all the columns that aren't baseline covars
-         -starts_with("L_"), -starts_with("C_"),
-         -starts_with("Y_"), -starts_with("A_"),
-         -starts_with("H_")) %>%
+bs <- dat_lmtp |> # names of baseline covariates cols
+  select(red_cap_source, age, sex, bmi, cad, home_o2_yn, dm, htn, cva) |> # subset of baseline confounders from paper
   names()
 y <- paste0("Y_",padded_days_out) # names of outcome cols
 censoring <- paste0("C_",padded_days) # names of censoring cols (1 = observed at next time point)
 
-used_letters <- dat_lmtp %>% # names of time varying covariates
+used_letters <- dat_lmtp |> # names of time varying covariates
   select(starts_with("L_"),
          starts_with("H_"),
-         -ends_with(paste0("_",outcome_day))) %>%
+         -ends_with(paste0("_",outcome_day))) |>
   names() 
 
 tv <- map(0:(outcome_day - 1), function(x) { # time varying covariates must be a list
@@ -165,7 +162,7 @@ k <- 1 # we assume that data from k days previously is sufficient for the patien
 res_steroid <-
   progressr::with_progress(
     lmtp_sdr(
-      dat_lmtp,
+      dat_lmtp_fix_censoring,
       trt = a,
       outcome = y,
       baseline = bs,
