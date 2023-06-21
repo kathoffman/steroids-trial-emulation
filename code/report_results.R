@@ -30,8 +30,8 @@ library(lmtp)
 
 ## read in results
 
-res_steroid <- read_rds(here::here("code/github_tutorial/res_steroid.rds"))
-res_no_steroid <- read_rds(here::here("code/github_tutorial/res_no_steroid.rds"))
+res_steroid <- read_rds(here::here("output/res_steroid.rds"))
+res_no_steroid <- read_rds(here::here("output/res_no_steroid.rds"))
 
 ## ------------------------------------------------------------------------------------------
 
