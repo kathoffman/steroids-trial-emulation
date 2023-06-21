@@ -162,7 +162,7 @@ k <- 1 # we assume that data from k days previously is sufficient for the patien
 res_steroid <-
   progressr::with_progress(
     lmtp_sdr(
-      dat_lmtp_fix_censoring,
+      dat_lmtp,
       trt = a,
       outcome = y,
       baseline = bs,
